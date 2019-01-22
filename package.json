@@ -1,5 +1,5 @@
 {
-  "name": "@hookz/usecookie",
+  "name": "usecookie",
   "version": "1.0.0",
   "description": "A React hook for managing cookies with no dependencies.",
   "keywords": [
