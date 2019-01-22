@@ -1,7 +1,7 @@
 {
   "name": "@hookz/usecookie",
   "version": "1.0.0",
-  "description": "A React hook utility for managing cookies with no dependencies.",
+  "description": "A React hook for managing cookies with no dependencies.",
   "keywords": [
     "cookies",
     "react",
