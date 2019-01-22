@@ -12,7 +12,7 @@
     "node": ">=8",
     "npm": ">=5"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel index.js -d dist",
     "prepublishOnly": "npm run build",
