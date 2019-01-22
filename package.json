@@ -1,23 +1,42 @@
 {
   "name": "@hookz/usecookie",
   "version": "1.0.0",
-  "description": "A React hook utility for managing cookies with no external dependencies.",
+  "description": "A React hook utility for managing cookies with no dependencies.",
   "keywords": [
     "cookies",
     "react",
     "hooks",
     "utility"
   ],
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "build": "babel index.js -d dist",
+    "prepublishOnly": "npm run build",
+    "test": "jest"
   },
   "peerDependencies": {
-    "react": "^16.7.0-alpha.0"
+    "react": "^16.8.0-alpha.0"
   },
   "devDependencies": {
-    "react": "^16.7.0-alpha.0",
-    "react-dom": "^16.7.0-alpha.0"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "jest": "^23.6.0",
+    "prettier": "^1.16.0",
+    "react": "^16.8.0-alpha.0",
+    "react-dom": "^16.8.0-alpha.0",
+    "regenerator-runtime": "^0.13.1"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   },
   "author": "Tyler Wolff <tylerwolff@gmail.com> (https://github.com/tylerwolff)",
   "license": "MIT",

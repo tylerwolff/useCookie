@@ -8,8 +8,9 @@
 # testing
 /coverage
 
-# production
-/build
+# builds
+dist
+.rpt2_cache
 
 # misc
 .DS_Store

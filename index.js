@@ -1,27 +1,23 @@
 import { useState } from "react";
 
-function setCookie(cname, cvalue, options) {
-  var d = new Date();
-  d.setTime(d.getTime() + options.days * 24 * 60 * 60 * 1000);
-  var expires = "expires=" + d.toUTCString();
+const setCookie = (name, value, options) => {
+  const expires = new Date(Date.now() + options.days * 864e5).toUTCString();
   document.cookie =
-    cname + "=" + cvalue + ";" + expires + ";path=" + options.path;
-}
+    name +
+    "=" +
+    encodeURIComponent(value) +
+    "; expires=" +
+    expires +
+    "; path=" +
+    options.path;
+};
 
-function getCookie(cname) {
-  var name = cname + "=";
-  var ca = document.cookie.split(";");
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == " ") {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
+const getCookie = name => {
+  return document.cookie.split("; ").reduce((r, v) => {
+    const parts = v.split("=");
+    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+  }, "");
+};
 
 export default function(key, initialValue) {
   const [item, setItem] = useState(() => {
