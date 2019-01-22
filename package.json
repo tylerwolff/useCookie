@@ -2,16 +2,23 @@
   "name": "@hookz/usecookie",
   "version": "1.0.0",
   "description": "A React hook utility for managing cookies with no external dependencies.",
-  "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
   "keywords": [
     "cookie",
     "react",
     "hooks",
     "utility"
   ],
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "peerDependencies": {
+    "react": "^16.7.0-alpha.0"
+  },
+  "devDependencies": {
+    "react": "^16.7.0-alpha.0",
+    "react-dom": "^16.7.0-alpha.0"
+  },
   "author": "Tyler Wolff <tylerwolff@gmail.com> (https://github.com/tylerwolff)",
   "license": "MIT",
   "repository": "github:tylerwolff/useCookie"
