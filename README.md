@@ -33,5 +33,5 @@ export default props => {
 };
 ```
 
-[npm-badge]: https://img.shields.io/npm/v/useCookie.svg
-[npm]: https://www.npmjs.org/package/useCookie
+[npm-badge]: https://img.shields.io/npm/v/react-use-cookie.svg
+[npm]: https://www.npmjs.org/package/react-use-cookie
