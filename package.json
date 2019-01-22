@@ -1,5 +1,5 @@
 {
-  "name": "usecookie",
+  "name": "react-use-cookie",
   "version": "1.0.0",
   "description": "A React hook for managing cookies with no dependencies.",
   "keywords": [

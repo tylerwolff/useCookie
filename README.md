@@ -7,19 +7,19 @@ A React hook for managing cookies with no dependencies.
 ## Installation
 
 ```
-npm install usecookie
+npm install react-use-cookie
 ```
 
 or
 
 ```
-yarn add usecookie
+yarn add react-use-cookie
 ```
 
 ## Usage
 
 ```jsx
-import useCookie from 'usecookie';
+import useCookie from 'react-use-cookie';
 
 export default props => {
   const [userToken, setUserToken] = useCookie('token', '0');
