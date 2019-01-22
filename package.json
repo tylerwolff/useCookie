@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A React hook utility for managing cookies with no external dependencies.",
   "keywords": [
-    "cookie",
+    "cookies",
     "react",
     "hooks",
     "utility"
@@ -21,5 +21,6 @@
   },
   "author": "Tyler Wolff <tylerwolff@gmail.com> (https://github.com/tylerwolff)",
   "license": "MIT",
-  "repository": "github:tylerwolff/useCookie"
+  "repository": "github:tylerwolff/useCookie",
+  "homepage": "https://github.com/useCookie/useCookie#readme"
 }
