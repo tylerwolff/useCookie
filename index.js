@@ -12,14 +12,14 @@ const setCookie = (name, value, options) => {
     options.path;
 };
 
-const getCookie = name => {
+export const getCookie = (name) => {
   return document.cookie.split('; ').reduce((r, v) => {
     const parts = v.split('=');
     return parts[0] === name ? decodeURIComponent(parts[1]) : r;
   }, '');
 };
 
-export default function(key, initialValue) {
+export default function (key, initialValue) {
   const [item, setItem] = useState(() => {
     return getCookie(key) || initialValue;
   });

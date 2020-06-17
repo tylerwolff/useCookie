@@ -21,7 +21,7 @@ yarn add react-use-cookie
 ```jsx
 import useCookie from 'react-use-cookie';
 
-export default props => {
+export default (props) => {
   const [userToken, setUserToken] = useCookie('token', '0');
 
   render(
@@ -30,6 +30,17 @@ export default props => {
       <button onClick={() => setUserToken('123')}>Change token</button>
     </div>
   );
+};
+```
+
+You can also access a `getCookie` function, if you need to access cookies outside of a React-component:
+
+```jsx
+import { getCookie } from 'react-use-cookie';
+
+const getUser = () => {
+  const xsrfToken = getCookie('XSRF-TOKEN');
+  // use to call your API etc
 };
 ```
 
