@@ -1,7 +1,14 @@
 import { useState } from 'react';
 
-const setCookie = (name, value, options) => {
-  const expires = new Date(Date.now() + options.days * 864e5).toUTCString();
+export const setCookie = (name, value, options) => {
+  const optionsWithDefaults = {
+    days: 7,
+    path: '/',
+    ...options,
+  };
+  const expires = new Date(
+    Date.now() + optionsWithDefaults.days * 864e5
+  ).toUTCString();
   document.cookie =
     name +
     '=' +
@@ -9,7 +16,7 @@ const setCookie = (name, value, options) => {
     '; expires=' +
     expires +
     '; path=' +
-    options.path;
+    optionsWithDefaults.path;
 };
 
 export const getCookie = (name) => {
@@ -24,7 +31,7 @@ export default function (key, initialValue) {
     return getCookie(key) || initialValue;
   });
 
-  const updateItem = (value, options = { days: 7, path: '/' }) => {
+  const updateItem = (value, options) => {
     setItem(value);
     setCookie(key, value, options);
   };
