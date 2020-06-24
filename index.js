@@ -1,7 +1,14 @@
 import { useState } from 'react';
 
-const setCookie = (name, value, options) => {
-  const expires = new Date(Date.now() + options.days * 864e5).toUTCString();
+export const setCookie = (name, value, options) => {
+  const optionsWithDefaults = {
+    days: 7,
+    path: '/',
+    ...options,
+  };
+  const expires = new Date(
+    Date.now() + optionsWithDefaults.days * 864e5
+  ).toUTCString();
   document.cookie =
     name +
     '=' +
@@ -9,22 +16,22 @@ const setCookie = (name, value, options) => {
     '; expires=' +
     expires +
     '; path=' +
-    options.path;
+    optionsWithDefaults.path;
 };
 
-const getCookie = name => {
+export const getCookie = (name) => {
   return document.cookie.split('; ').reduce((r, v) => {
     const parts = v.split('=');
     return parts[0] === name ? decodeURIComponent(parts[1]) : r;
   }, '');
 };
 
-export default function(key, initialValue) {
+export default function (key, initialValue) {
   const [item, setItem] = useState(() => {
     return getCookie(key) || initialValue;
   });
 
-  const updateItem = (value, options = { days: 7, path: '/' }) => {
+  const updateItem = (value, options) => {
     setItem(value);
     setCookie(key, value, options);
   };
