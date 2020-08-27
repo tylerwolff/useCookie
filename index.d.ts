@@ -9,19 +9,21 @@ declare module 'react-use-cookie' {
   }
 
   export interface updateItem {
-    (value: string, options?: cookieOptions): void;
+    (value: any, options?: cookieOptions): void;
   }
 
   export function setCookie(
     name: string,
-    value: string,
+    value: any,
     options?: cookieOptions
   ): void;
 
-  export function getCookie(name: string): string;
+  export function hasJsonStructure(str: string): boolean;
+
+  export function getCookie(name: string): any;
 
   export default function (
     key: string,
-    initialValue: string
+    initialValue: any
   ): [string, updateItem];
 }
