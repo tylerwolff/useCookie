@@ -6,13 +6,21 @@ export const setCookie = (name, value, options) => {
     path: '/',
     ...options,
   };
+
+  let encoded = ''
+  if (typeof value === 'string' || value instanceof String) {
+    encoded = encodeURIComponent(value)
+  } else {
+    encoded = encodeURIComponent(JSON.stringify(value))
+  }
+
   const expires = new Date(
     Date.now() + optionsWithDefaults.days * 864e5
   ).toUTCString();
   document.cookie =
     name +
     '=' +
-    encodeURIComponent(value) +
+    encoded +
     '; expires=' +
     expires +
     '; path=' +
