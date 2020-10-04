@@ -1,6 +1,7 @@
 // Type definitions for react-use-cookie
 // Project: useCookie
 // Definitions by: Tyler Wolff <https://github.com/tylerwolff>
+//                 Stefan Natter <https://github.com/natterstefan>
 
 declare module 'react-use-cookie' {
   interface cookieOptions {
@@ -18,9 +19,9 @@ declare module 'react-use-cookie' {
     options?: cookieOptions
   ): void;
 
-  export function getCookie(name: string): string;
+  export function getCookie(name: string, initialValue: string): string;
 
-  export default function (
+  export default function(
     key: string,
     initialValue: string
   ): [string, updateItem];

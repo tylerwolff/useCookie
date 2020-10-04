@@ -1,6 +1,12 @@
 import { useState } from 'react';
 
+const isBrowser = typeof window !== 'undefined';
+
 export const setCookie = (name, value, options) => {
+  if (!isBrowser) {
+    return;
+  }
+
   const optionsWithDefaults = {
     days: 7,
     path: '/',
@@ -19,16 +25,20 @@ export const setCookie = (name, value, options) => {
     optionsWithDefaults.path;
 };
 
-export const getCookie = (name) => {
-  return document.cookie.split('; ').reduce((r, v) => {
-    const parts = v.split('=');
-    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
-  }, '');
+export const getCookie = (name, initialValue) => {
+  return (
+    (isBrowser &&
+      document.cookie.split('; ').reduce((r, v) => {
+        const parts = v.split('=');
+        return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+      }, '')) ||
+    initialValue
+  );
 };
 
-export default function (key, initialValue) {
+export default function(key, initialValue) {
   const [item, setItem] = useState(() => {
-    return getCookie(key) || initialValue;
+    return getCookie(key, initialValue);
   });
 
   const updateItem = (value, options) => {
