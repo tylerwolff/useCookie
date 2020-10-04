@@ -6,13 +6,13 @@ A React hook for managing cookies with no dependencies.
 
 ## Installation
 
-```
+```bash
 npm install react-use-cookie
 ```
 
 or
 
-```
+```bash
 yarn add react-use-cookie
 ```
 
@@ -35,22 +35,16 @@ export default props => {
 };
 ```
 
-You can also specify an optional third argument - an options object with the following keys:
-
-```tsx
-{
-  // The number of days the cookie is stored (defaults to 7)
-  days: number;
-  // The path of the cookie (defaults to '/')
-  path: string;
-}
-```
+`setUserToken` accepts a second argument: `options`. Different to the named
+export, for this one it is the second not the third argument. Take a look at
+[setCookie](#setcookie) for more details.
 
 This package also has a few other exports that can be used directly.
 
 ### `getCookie`
 
-If you need to access a cookie outside of a React component, you can use the named `getCookie` export:
+If you need to access a cookie outside of a React component, you can use the
+named `getCookie` export:
 
 ```jsx
 import { getCookie } from 'react-use-cookie';
@@ -63,7 +57,8 @@ const getUser = () => {
 
 ### `setCookie`
 
-If you need to set a cookie outside of a React component, you can use the named `setCookie` export:
+If you need to set a cookie outside of a React component, you can use the
+named `setCookie` export:
 
 ```jsx
 import { setCookie } from 'react-use-cookie';
@@ -72,7 +67,8 @@ const saveLocale = locale => {
 };
 ```
 
-You can also specify an optional third argument - the same options object as above:
+You can also specify an optional third argument - the same options object as
+above:
 
 ```tsx
 {
