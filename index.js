@@ -3,18 +3,18 @@ import { useState } from 'react';
 const isBrowser = typeof window !== 'undefined';
 
 export const setCookie = (name, value, options) => {
-  if (!isBrowser) {
-    return;
-  }
+  if (!isBrowser) return;
 
   const optionsWithDefaults = {
     days: 7,
     path: '/',
     ...options,
   };
+
   const expires = new Date(
     Date.now() + optionsWithDefaults.days * 864e5
   ).toUTCString();
+
   document.cookie =
     name +
     '=' +
