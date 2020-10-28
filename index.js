@@ -25,7 +25,7 @@ export const setCookie = (name, value, options) => {
     optionsWithDefaults.path;
 };
 
-export const getCookie = (name, initialValue) => {
+export const getCookie = (name, initialValue = '') => {
   return (
     (isBrowser &&
       document.cookie.split('; ').reduce((r, v) => {
