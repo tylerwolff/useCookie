@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
+import { ObservableMap } from './ObservableMap';
 
 const isBrowser = typeof window !== 'undefined';
 
 export const setCookie = (name, value, options) => {
   if (!isBrowser) return;
+
+  CookieMap.set(name, value);
 
   const optionsWithDefaults = {
     days: 7,
@@ -26,14 +29,26 @@ export const setCookie = (name, value, options) => {
 };
 
 export const getCookie = (name, initialValue = '') => {
-  return (
-    (isBrowser &&
-      document.cookie.split('; ').reduce((r, v) => {
-        const parts = v.split('=');
-        return parts[0] === name ? decodeURIComponent(parts[1]) : r;
-      }, '')) ||
-    initialValue
-  );
+  if (!isBrowser) {
+    return initialValue;
+  }
+
+  const cookieValue = document.cookie.split('; ').reduce((r, v) => {
+    const parts = v.split('=');
+    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+  }, '');
+
+  if (CookieMap.get(name) !== cookieValue) {
+    CookieMap.set(name, cookieValue);
+  }
+
+  return cookieValue || initialValue;
+};
+
+const CookieMap = new ObservableMap();
+
+export const observeCookie = (name, cb) => {
+  return CookieMap.observe(name, cb);
 };
 
 export default function(key, initialValue) {
@@ -41,8 +56,9 @@ export default function(key, initialValue) {
     return getCookie(key, initialValue);
   });
 
+  useLayoutEffect(() => observeCookie(key, setItem), [key]);
+
   const updateItem = (value, options) => {
-    setItem(value);
     setCookie(key, value, options);
   };
 
