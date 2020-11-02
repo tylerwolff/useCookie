@@ -1,5 +1,8 @@
 export class ObservableMap extends Map {
-  _observers = {};
+  constructor() {
+    super();
+    this._observers = {};
+  }
 
   set(key, value) {
     super.set(key, value);
