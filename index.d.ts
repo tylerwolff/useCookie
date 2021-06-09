@@ -21,6 +21,10 @@ declare module 'react-use-cookie' {
 
   export function getCookie(name: string, initialValue?: string): string;
 
+  type Unobserve = () => void
+
+  export function observeCookie(name: string, cb: (value: string) => void): Unobserve;
+
   export default function(
     key: string,
     initialValue?: string
