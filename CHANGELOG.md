@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here. This project
 adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## unreleased
+
+- Removed `initialValue` argument
+- Fixed hydration mismatch between SSR & browser rendering
+- Rewritten in *typescript*
+
 ## [v1.2.1](https://github.com/tylerwolff/useCookie/releases/tag/v1.2.1) (2020-10-27)
 
 - Fixes types for `getCookie`, making `initialValue` an optional param

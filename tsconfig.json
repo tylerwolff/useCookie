@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "CommonJS",
+        "outDir": "./dist/cjs",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "lib": [
+            "DOM",
+            "ES6",
+        ],
+        "types": [],
+        "sourceMap": true,
+        "declaration": true,
+        "strict": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "stripInternal": true,
+    },
+    "include": [
+        "./src",
+    ],
+}

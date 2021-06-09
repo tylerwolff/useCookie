@@ -23,16 +23,16 @@ yarn add react-use-cookie
 ```jsx
 import useCookie from 'react-use-cookie';
 
-export default props => {
-  const [userToken, setUserToken] = useCookie('token', '0');
+export default function MyComponent(props) {
+  const [userToken, setUserToken] = useCookie('token');
 
-  render(
+  return (
     <div>
       <p>{userToken}</p>
       <button onClick={() => setUserToken('123')}>Change token</button>
     </div>
   );
-};
+}
 ```
 
 `setUserToken` accepts a second argument: `options`. Different to the named
@@ -46,13 +46,13 @@ This package also has a few other exports that can be used directly.
 If you need to access a cookie outside of a React component, you can use the
 named `getCookie` export:
 
-```jsx
+```js
 import { getCookie } from 'react-use-cookie';
 
-const getUser = () => {
+function getUser() {
   const xsrfToken = getCookie('XSRF-TOKEN');
   // use to call your API etc
-};
+}
 ```
 
 ### `setCookie`
@@ -60,22 +60,23 @@ const getUser = () => {
 If you need to set a cookie outside of a React component, you can use the
 named `setCookie` export:
 
-```jsx
+```js
 import { setCookie } from 'react-use-cookie';
-const saveLocale = locale => {
+
+function saveLocale(locale) {
   setCookie('locale', locale);
-};
+}
 ```
 
 You can also specify an optional third argument - the same options object as
 above:
 
-```tsx
+```ts
 {
   // The number of days the cookie is stored (defaults to 7)
-  days: number;
+  days?: number;
   // The path of the cookie (defaults to '/')
-  path: string;
+  path?: string;
 }
 ```
 
