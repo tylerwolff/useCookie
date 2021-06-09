@@ -1,0 +1,4 @@
+*
+!/dist/**/*
+
+# package.json & README & CHANGELOG is always included
