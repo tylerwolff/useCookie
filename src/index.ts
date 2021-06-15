@@ -4,10 +4,11 @@ const IS_BROWSER = typeof window !== "undefined";
 const DAY_IN_MS = 24 * 60 * 60 * 1000;
 
 export interface SetCookieOptions {
-    /** Expiration duration of the cookie in days. Defaults to `7`. */
+    /** Expiration duration of the cookie in days.
+     * @default 7 */
     days?: number,
 
-    /** Defaults to `/`. */
+    /** @default "/" */
     path?: string,
 }
 
