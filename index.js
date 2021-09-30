@@ -8,6 +8,8 @@ export const setCookie = (name, value, options) => {
   const optionsWithDefaults = {
     days: 7,
     path: '/',
+    samesite: 'none'
+    secure: false,
     ...options,
   };
 
@@ -22,7 +24,10 @@ export const setCookie = (name, value, options) => {
     '; expires=' +
     expires +
     '; path=' +
-    optionsWithDefaults.path;
+    optionsWithDefaults.path
+    '; samesite=' +
+    optionsWithDefaults.samesite +
+    optionsWithDefaults.secure ? '; secure' : '';
 };
 
 export const getCookie = (name, initialValue = '') => {

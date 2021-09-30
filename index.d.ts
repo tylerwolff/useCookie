@@ -7,6 +7,8 @@ declare module 'react-use-cookie' {
   interface cookieOptions {
     days?: number;
     path?: string;
+    samesite?: 'none' | 'lax' | 'strict';
+    secure?: boolean;
   }
 
   export interface updateItem {

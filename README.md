@@ -73,9 +73,13 @@ above:
 ```tsx
 {
   // The number of days the cookie is stored (defaults to 7)
-  days: number;
+  days?: number;
   // The path of the cookie (defaults to '/')
-  path: string;
+  path?: string;
+  // SameSite prevents the browser from sending this cookie along with cross-site requests. Possible values are lax, strict or none
+  samesite?: 'none' | 'lax' | 'strict';
+  // Cookie to only be transmitted over secure protocol as https
+  secure?: boolean;
 }
 ```
 
