@@ -23,16 +23,16 @@
     "react": ">=16.8.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.7",
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.9.0",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "regenerator-runtime": "^0.13.3"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "regenerator-runtime": "^0.13.9"
   },
   "jest": {
     "transform": {
