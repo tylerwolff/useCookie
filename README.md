@@ -35,18 +35,26 @@ export default props => {
 };
 ```
 
-`setUserToken` accepts a second argument: `options`. Different to the named
-export, for this one it is the second not the third argument. Take a look at
-[setCookie](#setcookie) for more details.
+In this example you can also set custom cookie options by passing an options object to `setUserToken`:
 
-This package also has a few other exports that can be used directly.
+```js
+setUserToken('abcd', {
+  days: 365,
+  samesite: 'strict',
+  secure: true,
+});
+```
+
+See [setCookie](#setcookie) for more option information about this.
+
+As a convenience this package also exports the get and set functions so they can be used directly.
 
 ### `getCookie`
 
 If you need to access a cookie outside of a React component, you can use the
-named `getCookie` export:
+exported `getCookie` function:
 
-```jsx
+```js
 import { getCookie } from 'react-use-cookie';
 
 const getUser = () => {
@@ -58,24 +66,35 @@ const getUser = () => {
 ### `setCookie`
 
 If you need to set a cookie outside of a React component, you can use the
-named `setCookie` export:
+exported `setCookie` function:
 
-```jsx
+```js
 import { setCookie } from 'react-use-cookie';
+
 const saveLocale = locale => {
-  setCookie('locale', locale);
+  setCookie('locale', locale, {
+    days: 1,
+    domain: 'github.com',
+    samesite: 'lax',
+    secure: true,
+  });
 };
 ```
 
-You can also specify an optional third argument - the same options object as
-above:
+You can also specify cookie options as a third argument:
 
 ```tsx
 {
   // The number of days the cookie is stored (defaults to 7)
-  days: number;
+  days?: number;
+
   // The path of the cookie (defaults to '/')
-  path: string;
+  path?: string;
+
+  // No defaults
+  domain?: string;
+  samesite?: 'none' | 'lax' | 'strict';
+  secure?: boolean;
 }
 ```
 
