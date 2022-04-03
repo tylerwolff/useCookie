@@ -23,7 +23,7 @@ yarn add react-use-cookie
 ```jsx
 import useCookie from 'react-use-cookie';
 
-export default props => {
+export default (props) => {
   const [userToken, setUserToken] = useCookie('token', '0');
 
   render(
@@ -40,8 +40,8 @@ In this example you can also set custom cookie options by passing an options obj
 ```js
 setUserToken('abcd', {
   days: 365,
-  samesite: 'strict',
-  secure: true,
+  SameSite: 'Strict',
+  Secure: true,
 });
 ```
 
@@ -71,12 +71,12 @@ exported `setCookie` function:
 ```js
 import { setCookie } from 'react-use-cookie';
 
-const saveLocale = locale => {
+const saveLocale = (locale) => {
   setCookie('locale', locale, {
     days: 1,
     domain: 'github.com',
-    samesite: 'lax',
-    secure: true,
+    SameSite: 'Lax',
+    Secure: true,
   });
 };
 ```
@@ -91,10 +91,11 @@ You can also specify cookie options as a third argument:
   // The path of the cookie (defaults to '/')
   path?: string;
 
-  // No defaults
+  // Browser defaults unless set
   domain?: string;
-  samesite?: 'none' | 'lax' | 'strict';
-  secure?: boolean;
+  SameSite?: 'None' | 'Lax' | 'Strict';
+  Secure?: boolean;
+  HttpOnly?: boolean;
 }
 ```
 

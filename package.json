@@ -17,7 +17,7 @@
   "scripts": {
     "build": "babel index.js -d dist && cp index.d.ts dist/index.d.ts",
     "prepublishOnly": "npm run build",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "peerDependencies": {
     "react": ">=16.8"

@@ -2,6 +2,22 @@ import { useState } from 'react';
 
 const isBrowser = typeof window !== 'undefined';
 
+export function stringifyOptions(options) {
+  return Object.keys(options).reduce((acc, key) => {
+    if (key === 'days') {
+      return acc;
+    } else {
+      if (options[key] === false) {
+        return acc;
+      } else if (options[key] === true) {
+        return `${acc}; ${key}`;
+      } else {
+        return `${acc}; ${key}=${options[key]}`;
+      }
+    }
+  }, '');
+}
+
 export const setCookie = (name, value, options) => {
   if (!isBrowser) return;
 
@@ -21,8 +37,7 @@ export const setCookie = (name, value, options) => {
     encodeURIComponent(value) +
     '; expires=' +
     expires +
-    '; path=' +
-    optionsWithDefaults.path;
+    stringifyOptions(optionsWithDefaults);
 };
 
 export const getCookie = (name, initialValue = '') => {
@@ -36,7 +51,7 @@ export const getCookie = (name, initialValue = '') => {
   );
 };
 
-export default function(key, initialValue) {
+export default function (key, initialValue) {
   const [item, setItem] = useState(() => {
     return getCookie(key, initialValue);
   });
