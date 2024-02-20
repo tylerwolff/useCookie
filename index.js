@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -56,10 +56,10 @@ export default function (key, initialValue) {
     return getCookie(key, initialValue);
   });
 
-  const updateItem = (value, options) => {
+  const updateItem = useCallback((value, options) => {
     setItem(value);
     setCookie(key, value, options);
-  };
+  }, [key]);
 
   return [item, updateItem];
 }
