@@ -17,6 +17,10 @@ declare module 'react-use-cookie' {
     (value: string, options?: cookieOptions): void;
   }
 
+  export interface removeItem {
+    (): void;
+  }
+
   export function setCookie(
     name: string,
     value: string,
