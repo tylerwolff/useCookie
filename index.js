@@ -51,15 +51,24 @@ export const getCookie = (name, initialValue = '') => {
   );
 };
 
+export const removeCookie = (name) => {
+  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
+
 export default function (key, initialValue) {
   const [item, setItem] = useState(() => {
     return getCookie(key, initialValue);
   });
+
+  const removeItem = useCallback(() => {
+    setItem(undefined);
+    removeCookie(key);
+  }, [key]);
 
   const updateItem = useCallback((value, options) => {
     setItem(value);
     setCookie(key, value, options);
   }, [key]);
 
-  return [item, updateItem];
+  return [item, updateItem, removeItem];
 }

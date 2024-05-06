@@ -25,8 +25,10 @@ declare module 'react-use-cookie' {
 
   export function getCookie(name: string, initialValue?: string): string;
 
+  export function removeCookie(name: string): void;
+
   export default function (
     key: string,
     initialValue?: string
-  ): [string, updateItem];
+  ): [string, updateItem, removeItem];
 }
