@@ -24,12 +24,13 @@ yarn add react-use-cookie
 import useCookie from 'react-use-cookie';
 
 export default (props) => {
-  const [userToken, setUserToken] = useCookie('token', '0');
+  const [userToken, setUserToken, removeUserToken] = useCookie('token', '0');
 
   render(
     <div>
       <p>{userToken}</p>
       <button onClick={() => setUserToken('123')}>Change token</button>
+      <button onClick={removeUserToken}>Remove token</button>
     </div>
   );
 };
@@ -97,6 +98,17 @@ You can also specify cookie options as a third argument:
   Secure?: boolean;
   HttpOnly?: boolean;
 }
+```
+
+### `removeCookie`
+
+If you need to remove a cookie outside of a React component, you can use the
+exported `removeCookie` function:
+
+```js
+import { removeCookie } from 'react-use-cookie';
+
+removeCookie('token');
 ```
 
 [npm-badge]: https://img.shields.io/npm/v/react-use-cookie.svg
