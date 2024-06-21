@@ -25,7 +25,7 @@ declare module 'react-use-cookie' {
     name: string,
     value: string,
     options?: cookieOptions
-  ): void;
+  ): boolean;
 
   export function getCookie(name: string, initialValue?: string): string;
 

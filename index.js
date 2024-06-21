@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 
 const isBrowser = typeof window !== 'undefined';
+const maxCookieSize = 4096;
 
 export function stringifyOptions(options) {
   return Object.keys(options).reduce((acc, key) => {
@@ -31,13 +32,22 @@ export const setCookie = (name, value, options) => {
     Date.now() + optionsWithDefaults.days * 864e5
   ).toUTCString();
 
-  document.cookie =
+  const cookieValue =
     name +
     '=' +
     encodeURIComponent(value) +
     '; expires=' +
     expires +
     stringifyOptions(optionsWithDefaults);
+    
+  document.cookie = cookieValue;
+
+  const sizeValue = new Blob([cookieValue]).size;
+
+  if (sizeValue >= maxCookieSize) {
+    return false;
+  }
+  return true;
 };
 
 export const getCookie = (name, initialValue = '') => {
